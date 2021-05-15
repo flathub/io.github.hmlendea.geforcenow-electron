@@ -28,6 +28,7 @@ modules:
       append-path: /usr/lib/sdk/node14/bin
       env:
         XDG_CACHE_HOME: '/run/build/geforcenow-electron/flatpak-node/cache'
+        ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     build-commands:
       - 'npm install --offline --prefix=geforcenow-electron --cache=$FLATPAK_BUILDER_BUILDDIR/flatpak-node/npm-cache'
       - 'cp -r geforcenow-electron /app'
