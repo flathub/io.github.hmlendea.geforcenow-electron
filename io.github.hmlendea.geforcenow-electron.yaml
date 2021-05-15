@@ -27,7 +27,7 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/node14/bin
       env:
-        XDG_CACHE_HOME: '/run/build/geforcenow-electron/flatpak-node/cache'
+        XDG_CACHE_HOME: '/run/build/geforcenow-electron/flatpak-node/npm-cache'
     build-commands:
       - 'npm install --offline --prefix=geforcenow-electron --cache=$FLATPAK_BUILDER_BUILDDIR/flatpak-node/npm-cache'
       - 'cp -r geforcenow-electron /app'
@@ -38,7 +38,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/hmlendea/geforcenow-electron
-        commit: 9918a6eaae4dfea9a145410038f7899485bd5f0f
+        commit: cc011cef286150112a0df07535ce27d239509840
         dest: geforcenow-electron
       - generated-sources.json
       - type: file
