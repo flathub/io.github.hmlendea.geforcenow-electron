@@ -27,9 +27,18 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/node14/bin
       env:
-        XDG_CACHE_HOME: '/run/build/geforcenow-electron/flatpak-node/cache'
-        ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+        NPM_CONFIG_LOGLEVEL: info
+        npm_config_nodedir: '/usr/lib/sdk/node14'
+        npm_config_cache: '/run/build/geforcenow-electron/flatpak-node/npm-cache'
+        XDG_CACHE_HOME: '/run/build/geforcenow-electron/flatpak-node/npm-cache'
+        ELECTRON_CACHE: '/run/build/geforcenow-electron/flatpak-node/electron-cache'
+        ELECTRON_BUILDER_CACHE: '/run/build/geforcenow-electron/flatpak-node/electron-builder-cache'
+        ELECTRON_CACHE_SUBDIR_NAME: '4f029753a9a8576806dced687079cdf26638acb9ef0f41141be4eff390c1bd52'
+        electron_config_cache: /run/build/geforcenow-electron/flatpak-node/electron-cache
     build-commands:
+      - mkdir "$ELECTRON_CACHE_SUBDIR_NAME"
+      - mv $ELECTRON_CACHE/* $ELECTRON_CACHE_SUBDIR_NAME
+      - mv $ELECTRON_CACHE_SUBDIR_NAME $ELECTRON_CACHE/
       - 'npm install --offline --prefix=geforcenow-electron --cache=$FLATPAK_BUILDER_BUILDDIR/flatpak-node/npm-cache'
       - 'cp -r geforcenow-electron /app'
       - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png'
