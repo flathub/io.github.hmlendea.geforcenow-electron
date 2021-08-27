@@ -48,7 +48,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/hmlendea/geforcenow-electron
-        commit: cc011cef286150112a0df07535ce27d239509840
+        commit: 85828134d16cce6756256e3a9a24c4e8f647ccc6
         dest: geforcenow-electron
       - generated-sources.json
       - type: file
