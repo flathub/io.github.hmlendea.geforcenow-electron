@@ -5,8 +5,6 @@ runtime-version: '20.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
 base-version: '20.08'
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node14
 separate-locales: false
 command: start-geforcenow-electron
 
@@ -18,39 +16,25 @@ finish-args:
   - '--share=network'
 
 modules:
-  - name: node
-    buildsystem: simple
-    build-commands:
-      - '/usr/lib/sdk/node14/install-sdk.sh'
+ 
   - name: geforcenow-electron
     buildsystem: simple
-    build-options:
-      append-path: /usr/lib/sdk/node14/bin
-      env:
-        NPM_CONFIG_LOGLEVEL: info
-        npm_config_nodedir: '/usr/lib/sdk/node14'
-        npm_config_cache: '/run/build/geforcenow-electron/flatpak-node/npm-cache'
-        XDG_CACHE_HOME: '/run/build/geforcenow-electron/flatpak-node/npm-cache'
-        ELECTRON_CACHE: '/run/build/geforcenow-electron/flatpak-node/electron-cache'
-        ELECTRON_BUILDER_CACHE: '/run/build/geforcenow-electron/flatpak-node/electron-builder-cache'
-        ELECTRON_CACHE_SUBDIR_NAME: '4f029753a9a8576806dced687079cdf26638acb9ef0f41141be4eff390c1bd52'
-        electron_config_cache: /run/build/geforcenow-electron/flatpak-node/electron-cache
     build-commands:
-      - mkdir "$ELECTRON_CACHE_SUBDIR_NAME"
-      - mv $ELECTRON_CACHE/* $ELECTRON_CACHE_SUBDIR_NAME
-      - mv $ELECTRON_CACHE_SUBDIR_NAME $ELECTRON_CACHE/
-      - 'npm install --offline --prefix=geforcenow-electron --cache=$FLATPAK_BUILDER_BUILDDIR/flatpak-node/npm-cache'
+      - unzip -d geforcenow-electron geforcenow-*_.zip
+      - rm geforcenow-*_.zip
       - 'cp -r geforcenow-electron /app'
       - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png'
       - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop'
       - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml'
       - 'install -Dm 755 start-geforcenow-electron.sh /app/bin/start-geforcenow-electron'
-    sources:
-      - type: git
-        url: https://github.com/hmlendea/geforcenow-electron
-        commit: 85828134d16cce6756256e3a9a24c4e8f647ccc6
-        dest: geforcenow-electron
-      - generated-sources.json
+      
+ sources:
+      - type: archive
+        only-arches:
+          - x86_64
+
+        url: https://github.com/hmlendea/geforcenow-electron/releases/download/v1.1.5/geforcenow_1.1.5_linux.zip
+        sha256: 1f8bc0ec0eefd2314d4a3ee9216e3ba57394d3a722069984f6b19695243a6926
       - type: file
         path: io.github.hmlendea.geforcenow-electron.metainfo.xml
       - type: file
