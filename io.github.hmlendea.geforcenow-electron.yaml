@@ -3,8 +3,6 @@ branch: stable
 runtime: org.freedesktop.Platform
 runtime-version: '20.08'
 sdk: org.freedesktop.Sdk
-base: org.electronjs.Electron2.BaseApp
-base-version: '20.08'
 separate-locales: false
 command: start-geforcenow-electron
 
@@ -19,20 +17,20 @@ modules:
  
   - name: geforcenow-electron
     buildsystem: simple
-    build-commands:
-      - unzip -d geforcenow-electron geforcenow-*_.zip
-      - rm geforcenow-*_.zip
+    build-commands:   
+      - unzip -d geforcenow-electron geforcenow_*.zip
+      - rm geforcenow_*.zip
       - 'cp -r geforcenow-electron /app'
       - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png'
       - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop'
       - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml'
       - 'install -Dm 755 start-geforcenow-electron.sh /app/bin/start-geforcenow-electron'    
     sources:
-      - type: archive
+      - type: file
         only-arches:
           - x86_64
         url: https://github.com/hmlendea/geforcenow-electron/releases/download/v1.1.5/geforcenow_1.1.5_linux.zip
-        sha256: 1f8bc0ec0eefd2314d4a3ee9216e3ba57394d3a722069984f6b19695243a6926
+        sha256: 1f8bc0ec0eefd2314d4a3ee9216e3ba57394d3a722069984f6b19695243a6926		
       - type: file
         path: io.github.hmlendea.geforcenow-electron.metainfo.xml
       - type: file
