@@ -3,6 +3,8 @@ branch: stable
 runtime: org.freedesktop.Platform
 runtime-version: '20.08'
 sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: '20.08'
 separate-locales: false
 command: start-geforcenow-electron
 
