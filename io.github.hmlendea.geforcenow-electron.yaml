@@ -42,6 +42,5 @@ modules:
       - type: script
         dest-filename: start-geforcenow-electron.sh
         commands:
-          - 'export PATH=$PATH:/app/node/bin'
           - 'export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"'
-          - 'exec zypak-wrapper /app/geforcenow-electron/node_modules/electron/dist/electron /app/geforcenow-electron "$@"'
+          - 'exec zypak-wrapper /app/geforcenow-electron/node_modules/electron/dist/electron /app/geforcenow-electron/geforcenow "$@"'
