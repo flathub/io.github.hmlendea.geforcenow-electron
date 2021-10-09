@@ -33,6 +33,11 @@ modules:
           - x86_64
         url: https://github.com/hmlendea/geforcenow-electron/releases/download/v1.1.5/geforcenow_1.1.5_linux.zip
         sha256: 1f8bc0ec0eefd2314d4a3ee9216e3ba57394d3a722069984f6b19695243a6926
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/hmlendea/geforcenow-electron/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: .assets[] | select(.name=="geforcenow-electron_" + $version + "_linux.zip") | .browser_download_url
       - type: file
         path: io.github.hmlendea.geforcenow-electron.metainfo.xml
       - type: file
