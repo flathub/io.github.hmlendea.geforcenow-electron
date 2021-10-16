@@ -49,4 +49,4 @@ modules:
         commands:
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
           - exec zypak-wrapper /app/geforcenow-electron/node_modules/electron/dist/electron
-            /app/geforcenow-electron/geforcenow "$@"
+            /app/geforcenow-electron/geforcenow-electron "$@"
