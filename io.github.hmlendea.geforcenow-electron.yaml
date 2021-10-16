@@ -19,8 +19,8 @@ modules:
   - name: geforcenow-electron
     buildsystem: simple
     build-commands:
-      - unzip -d geforcenow-electron geforcenow_*.zip
-      - rm geforcenow_*.zip
+      - unzip -d geforcenow-electron geforcenow-electron_*.zip
+      - rm geforcenow-electron_*.zip
       - cp -r geforcenow-electron /app
       - install -Dm 644 io.github.hmlendea.geforcenow-electron.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
       - install -Dm 644 io.github.hmlendea.geforcenow-electron.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
