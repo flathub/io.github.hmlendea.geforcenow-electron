@@ -9,35 +9,35 @@ separate-locales: false
 command: start-geforcenow-electron
 
 finish-args:
-  - '--share=ipc'
-  - '--socket=x11'
-  - '--device=dri'
-  - '--socket=pulseaudio'
-  - '--share=network'
+  - --share=ipc
+  - --socket=x11
+  - --device=dri
+  - --socket=pulseaudio
+  - --share=network
 
 modules:
- 
   - name: geforcenow-electron
     buildsystem: simple
-    build-commands:   
-      - unzip -d geforcenow-electron geforcenow_*.zip
-      - rm geforcenow_*.zip
-      - 'cp -r geforcenow-electron /app'
-      - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png'
-      - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop'
-      - 'install -Dm 644 io.github.hmlendea.geforcenow-electron.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml'
-      - 'install -Dm 755 start-geforcenow-electron.sh /app/bin/start-geforcenow-electron'    
+    build-commands:
+      - unzip -d geforcenow-electron geforcenow-electron_*.zip
+      - rm geforcenow-electron_*.zip
+      - cp -r geforcenow-electron /app
+      - install -Dm 644 io.github.hmlendea.geforcenow-electron.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+      - install -Dm 644 io.github.hmlendea.geforcenow-electron.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm 644 io.github.hmlendea.geforcenow-electron.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml
+      - install -Dm 755 start-geforcenow-electron.sh /app/bin/start-geforcenow-electron
     sources:
       - type: file
         only-arches:
           - x86_64
-        url: https://github.com/hmlendea/geforcenow-electron/releases/download/v1.1.5/geforcenow_1.1.5_linux.zip
-        sha256: 1f8bc0ec0eefd2314d4a3ee9216e3ba57394d3a722069984f6b19695243a6926
+        url: https://github.com/hmlendea/geforcenow-electron/releases/download/v1.1.6/geforcenow-electron_1.1.6_linux.zip
+        sha256: 5e76b6707a4c77dfae835bcfdbd800f020b70e64b6ea0796745c77a0a7df79ad
         x-checker-data:
           type: json
           url: https://api.github.com/repos/hmlendea/geforcenow-electron/releases/latest
           version-query: .tag_name | sub("^v"; "")
-          url-query: .assets[] | select(.name=="geforcenow-electron_" + $version + "_linux.zip") | .browser_download_url
+          url-query: .assets[] | select(.name=="geforcenow-electron_" + $version +
+            "_linux.zip") | .browser_download_url
       - type: file
         path: io.github.hmlendea.geforcenow-electron.metainfo.xml
       - type: file
@@ -47,5 +47,6 @@ modules:
       - type: script
         dest-filename: start-geforcenow-electron.sh
         commands:
-          - 'export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"'
-          - 'exec zypak-wrapper /app/geforcenow-electron/node_modules/electron/dist/electron /app/geforcenow-electron/geforcenow "$@"'
+          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
+          - exec zypak-wrapper /app/geforcenow-electron/node_modules/electron/dist/electron
+            /app/geforcenow-electron/geforcenow "$@"
