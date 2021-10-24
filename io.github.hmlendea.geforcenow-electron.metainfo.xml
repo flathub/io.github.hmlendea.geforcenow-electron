@@ -2,20 +2,20 @@
 <component type="desktop">
   <id>io.github.hmlendea.geforcenow-electron</id>
   <launchable type="desktop-id">io.github.hmlendea.geforcenow-electron.desktop</launchable>
-  <name>GeForce Now Electron</name>
-  <project_license>CC0-1.0</project_license>
+  <name>GeForce NOW Electron</name>
+  <project_license>GPL-3.0</project_license>
   <developer_name>hmlendea</developer_name>
-  <summary>Unofficial GeForce Now application written in Electron</summary>
-  <metadata_license>CC0-1.0</metadata_license>
+  <summary>Unofficial GeForce NOW application written in Electron</summary>
+  <metadata_license>GPL-3.0</metadata_license>
   <url type="homepage">https://github.com/hmlendea/geforcenow-electron</url>
   <url type="help">https://github.com/hmlendea/geforcenow-electron/issues</url>
   <url type="bugtracker">https://github.com/hmlendea/geforcenow-electron/issues</url>
   <description>
-    <p>Unofficial Linux Desktop client for Nvidia's GeForce NOW game streaming service </p>
+    <p>Unofficial Linux Desktop client for Nvidia's GeForce NOW game streaming service</p>
   </description>
   <screenshots>
     <screenshot type="default">
-      <image type="source">https://raw.githubusercontent.com/roypen/geforcenow-electron/master/gfn_screen.png</image>
+      <image type="source">https://raw.githubusercontent.com/hmlendea/geforcenow-electron/master/screenshot.png</image>
     </screenshot>
   </screenshots>
   <releases>
@@ -31,5 +31,5 @@
     <release version="1.1.3" date="2021-05-11"/>
   </releases>
   <content_rating type="oars-1.1"/>
-  <update_contact>roypen@outlook.com</update_contact>
+  <update_contact>Horatiu.Mlendea@ProtonMail.com</update_contact>
 </component>
