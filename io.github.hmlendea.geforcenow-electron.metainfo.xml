@@ -6,7 +6,7 @@
   <project_license>GPL-3.0</project_license>
   <developer_name>hmlendea</developer_name>
   <summary>Unofficial GeForce NOW application written in Electron</summary>
-  <metadata_license>GPL-3.0</metadata_license>
+  <metadata_license>CC0-1.0</metadata_license>
   <url type="homepage">https://github.com/hmlendea/geforcenow-electron</url>
   <url type="help">https://github.com/hmlendea/geforcenow-electron/issues</url>
   <url type="bugtracker">https://github.com/hmlendea/geforcenow-electron/issues</url>
