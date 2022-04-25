@@ -14,6 +14,7 @@ finish-args:
   - --device=all
   - --socket=pulseaudio
   - --share=network
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create
 
 modules:
   - name: geforcenow-electron
@@ -44,6 +45,11 @@ modules:
         path: io.github.hmlendea.geforcenow-electron.png
       - type: file
         path: io.github.hmlendea.geforcenow-electron.desktop
+      - type: script
+        commands:
+          - for i in {0..9}; do
+          - test -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
+          - done
       - type: script
         dest-filename: start-geforcenow-electron.sh
         commands:
