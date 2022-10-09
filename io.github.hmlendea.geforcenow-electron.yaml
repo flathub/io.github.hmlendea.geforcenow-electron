@@ -10,7 +10,8 @@ command: start-geforcenow-electron
 
 finish-args:
   - --share=ipc
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --device=all
   - --socket=pulseaudio
   - --share=network
@@ -55,4 +56,4 @@ modules:
         commands:
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
           - exec zypak-wrapper /app/geforcenow-electron/geforcenow-electron /app/geforcenow-electron/geforcenow-electron
-            "$@"
+            --ozone-platform-hint=auto "$@"
