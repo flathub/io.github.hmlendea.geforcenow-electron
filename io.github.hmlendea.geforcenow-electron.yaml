@@ -32,8 +32,8 @@ modules:
       - type: file
         only-arches:
           - x86_64
-        url: https://github.com/hmlendea/gfn-electron/releases/download/v1.11.0/geforcenow-electron_1.11.0_linux.zip
-        sha256: 67a4b86a2213f96a7359ff8702d759c1de5d9fb36267ee0d5e57647ac9e44a97
+        url: https://github.com/hmlendea/gfn-electron/releases/download/v1.12.0/geforcenow-electron_1.12.0_linux.zip
+        sha256: b71ddb2ff71db532e2b1eddf13175bb450f22dd0cbfc7032bfc9c673ab84abf7
         x-checker-data:
           type: json
           url: https://api.github.com/repos/hmlendea/gfn-electron/releases/latest
