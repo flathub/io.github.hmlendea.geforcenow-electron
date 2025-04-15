@@ -7,6 +7,6 @@ Type=Application
 Exec=
 Icon=io.github.hmlendea.geforcenow-electron
 StartupWMClass=geforce now
-Categories=Network;Game;
+Categories=Game;Network;RemoteAccess;
 Keywords=Game;Streaming;Nvidia;GeForce;NOW;GFN;
 Keywords[ro]=Game;Streaming;Joc;Transmisie;Transmisiune;Nvidia;GeForce;NOW;GFN;
