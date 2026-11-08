@@ -39,7 +39,7 @@ modules:
           url: https://api.github.com/repos/hmlendea/gfn-electron/releases/latest
           version-query: .tag_name | sub("^v"; "")
           url-query: .assets[] | select(.name=="geforcenow-electron_" + $version +
-            "_linux.zip") | .browser_download_url
+            "_linux_x64.zip") | .browser_download_url
       - type: file
         path: io.github.hmlendea.geforcenow-electron.metainfo.xml
       - type: file
