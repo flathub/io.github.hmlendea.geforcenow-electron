@@ -18,21 +18,21 @@ finish-args:
   - --filesystem=/run/udev:ro
 
 modules:
-  - name: geforcenow-electron
+  - name: geforcenow-electron-x86_64
+    only-arches: [x86_64]
     buildsystem: simple
     build-commands:
-      - unzip -d geforcenow-electron geforcenow-electron_*.zip
-      - rm geforcenow-electron_*.zip
-      - cp -r geforcenow-electron /app
-      - install -Dm 644 io.github.hmlendea.geforcenow-electron.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
-      - install -Dm 644 io.github.hmlendea.geforcenow-electron.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
-      - install -Dm 644 io.github.hmlendea.geforcenow-electron.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml
-      - install -Dm 755 start-geforcenow-electron.sh /app/bin/start-geforcenow-electron
+      - unzip -d "geforcenow-electron" "geforcenow-electron.zip"
+      - rm "geforcenow-electron.zip"
+      - cp -r "geforcenow-electron" /app
+      - install -Dm 644 "io.github.hmlendea.geforcenow-electron.png" "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png"
+      - install -Dm 644 "io.github.hmlendea.geforcenow-electron.desktop" "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+      - install -Dm 644 "io.github.hmlendea.geforcenow-electron.metainfo.xml" "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml"
+      - install -Dm 755 "start-geforcenow-electron.sh" "/app/bin/start-geforcenow-electron"
     sources:
       - type: file
-        only-arches:
-          - x86_64
         url: https://github.com/hmlendea/gfn-electron/releases/download/v3.1.0/geforcenow-electron_3.1.0_linux_x64.zip
+        dest-filename: geforcenow-electron.zip
         sha256: 5ea9876b3958958755fe7a7ee6d3b99830ff9ecdfe5f1f108fd71b2cc1c2703a
         x-checker-data:
           type: json
@@ -40,6 +40,45 @@ modules:
           version-query: .tag_name | sub("^v"; "")
           url-query: .assets[] | select(.name=="geforcenow-electron_" + $version +
             "_linux_x64.zip") | .browser_download_url
+      - type: file
+        path: io.github.hmlendea.geforcenow-electron.metainfo.xml
+      - type: file
+        path: io.github.hmlendea.geforcenow-electron.png
+      - type: file
+        path: io.github.hmlendea.geforcenow-electron.desktop
+      - type: script
+        commands:
+          - for i in {0..9}; do
+          - test -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
+          - done
+      - type: script
+        dest-filename: start-geforcenow-electron.sh
+        commands:
+          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
+          - exec zypak-wrapper /app/geforcenow-electron/geforcenow-electron /app/geforcenow-electron/geforcenow-electron
+            --ozone-platform-hint=auto "$@"
+  - name: geforcenow-electron-aarch64
+    only-arches: [aarch64]
+    buildsystem: simple
+    build-commands:
+      - unzip -d "geforcenow-electron" "geforcenow-electron.zip"
+      - rm "geforcenow-electron.zip"
+      - cp -r "geforcenow-electron" /app
+      - install -Dm 644 "io.github.hmlendea.geforcenow-electron.png" "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png"
+      - install -Dm 644 "io.github.hmlendea.geforcenow-electron.desktop" "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+      - install -Dm 644 "io.github.hmlendea.geforcenow-electron.metainfo.xml" "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml"
+      - install -Dm 755 "start-geforcenow-electron.sh" "/app/bin/start-geforcenow-electron"
+    sources:
+      - type: file
+        url: https://github.com/hmlendea/gfn-electron/releases/download/v3.1.0/geforcenow-electron_3.1.0_linux_arm64.zip
+        dest-filename: geforcenow-electron.zip
+        sha256: 0eefad150b815e66ec960f553acf37e98edb67620d0ec3fa585b5ac9362b9877
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/hmlendea/gfn-electron/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: .assets[] | select(.name=="geforcenow-electron_" + $version +
+            "_linux_arm64.zip") | .browser_download_url
       - type: file
         path: io.github.hmlendea.geforcenow-electron.metainfo.xml
       - type: file
