@@ -19,9 +19,13 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="3.1.1" date="2026-11-15">
+      <url type="details">https://github.com/hmlendea/gfn-electron/releases/tag/v3.1.1</url>
+      <description></description>
+    </release>
     <release version="3.1.0" date="2026-11-03">
       <url type="details">https://github.com/hmlendea/gfn-electron/releases/tag/v3.1.0</url>
-      <description></description>
+      <description/>
     </release>
     <release version="3.0.6" date="2026-10-23">
       <description/>
