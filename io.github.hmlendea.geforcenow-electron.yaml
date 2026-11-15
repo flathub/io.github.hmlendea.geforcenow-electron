@@ -31,9 +31,9 @@ modules:
       - install -Dm 755 "start-geforcenow-electron.sh" "/app/bin/start-geforcenow-electron"
     sources:
       - type: file
-        url: https://github.com/hmlendea/gfn-electron/releases/download/v3.1.0/geforcenow-electron_3.1.0_linux_x64.zip
+        url: https://github.com/hmlendea/gfn-electron/releases/download/v3.1.1/geforcenow-electron_3.1.1_linux_x64.zip
         dest-filename: geforcenow-electron.zip
-        sha256: 5ea9876b3958958755fe7a7ee6d3b99830ff9ecdfe5f1f108fd71b2cc1c2703a
+        sha256: ba39a2fa7f7f8f18a745d843b7c6e27ddf65d2608db85991f3186925e7117872
         x-checker-data:
           type: json
           url: https://api.github.com/repos/hmlendea/gfn-electron/releases/latest
@@ -70,9 +70,9 @@ modules:
       - install -Dm 755 "start-geforcenow-electron.sh" "/app/bin/start-geforcenow-electron"
     sources:
       - type: file
-        url: https://github.com/hmlendea/gfn-electron/releases/download/v3.1.0/geforcenow-electron_3.1.0_linux_arm64.zip
+        url: https://github.com/hmlendea/gfn-electron/releases/download/v3.1.1/geforcenow-electron_3.1.1_linux_arm64.zip
         dest-filename: geforcenow-electron.zip
-        sha256: 0eefad150b815e66ec960f553acf37e98edb67620d0ec3fa585b5ac9362b9877
+        sha256: ff3ea21163a5782772bbaedbb4beb4736795ee37b26e2864c6ad5319a8a79535
         x-checker-data:
           type: json
           url: https://api.github.com/repos/hmlendea/gfn-electron/releases/latest
